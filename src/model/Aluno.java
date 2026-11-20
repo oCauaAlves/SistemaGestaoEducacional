@@ -6,6 +6,7 @@ public class Aluno {
     private String matricula;
     private String curso;
 
+    // Construtor
     public Aluno(String nome, String matricula, String curso) {
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome inválido!");

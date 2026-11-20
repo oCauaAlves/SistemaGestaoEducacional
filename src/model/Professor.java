@@ -6,8 +6,8 @@ public class Professor {
     private String especialidade;
     private String registro;
 
+    // Construtor
     public Professor(String nome, String especialidade, String registro) {
-
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome inválido!");
         }
