@@ -3,6 +3,7 @@ import model.Aluno;
 import model.Professor;
 import model.Curso;
 import model.Turma;
+import model.Avaliacao;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +11,6 @@ public class Main {
         // Criando alunos
         Aluno aluno1 = new Aluno("Cauã", "2026001", "ADS");
         Aluno aluno2 = new Aluno("João", "2026002", "ADS");
-        Aluno aluno3 = new Aluno("Pedro", "2026003", "ADS");
 
         // Criando professor
         Professor professor = new Professor(
@@ -27,22 +27,45 @@ public class Main {
         // Criando turma
         Turma turma = new Turma("T001", professor, curso);
 
-        // Adicionando alunos
+        // Adicionando alunos à turma
         turma.adicionarAluno(aluno1);
         turma.adicionarAluno(aluno2);
-        turma.adicionarAluno(aluno3);
 
-        // Exibindo resumo da turma
-        System.out.println("=== TURMA APÓS ADICIONAR ALUNOS ===");
-        turma.exibirResumo();
+        // Criando avaliações
+        Avaliacao avaliacao1 = new Avaliacao("Prova de Java");
+        Avaliacao avaliacao2 = new Avaliacao("Trabalho de POO");
 
-        // Removendo aluno pela matrícula
-        turma.removerAluno("2026002");
+        // Atribuindo notas
+        avaliacao1.atribuirNota(9.5);
+        avaliacao2.atribuirNota(8.0);
 
-        // Exibindo resumo atualizado
-        System.out.println("\n=== TURMA APÓS REMOVER ALUNO ===");
-        turma.exibirResumo();
+        // Associando avaliações aos alunos
+        aluno1.adicionarAvaliacao(avaliacao1);
+        aluno2.adicionarAvaliacao(avaliacao2);
 
+        // Exibindo avaliações dos alunos da turma
+        System.out.println("===== AVALIACOES DA TURMA =====");
+
+        for (Aluno aluno : turma.getListaAlunos()) {
+            System.out.println("\nAluno: " + aluno.getNome());
+
+            for (Avaliacao avaliacao : aluno.getAvaliacoes()) {
+                System.out.println("Avaliação: "
+                        + avaliacao.getDescricao());
+
+                System.out.println("Nota: "
+                        + avaliacao.getNota());
+            }
+        }
+
+        // Testando validação da nota
+        System.out.println("\n===== TESTE DE VALIDACAO =====");
+
+        try {
+            avaliacao1.atribuirNota(11);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         // Identificação do desenvolvedor
         System.out.println("\nDesenvolvido por: Cauã Alves");

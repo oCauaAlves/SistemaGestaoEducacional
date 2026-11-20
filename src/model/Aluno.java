@@ -1,13 +1,19 @@
+
 package model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Aluno {
 
     private String nome;
     private String matricula;
     private String curso;
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
 
     // Construtor
     public Aluno(String nome, String matricula, String curso) {
+
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome inválido!");
         }
@@ -25,6 +31,12 @@ public class Aluno {
         this.curso = curso;
     }
 
+    // Adicionar avaliação ao aluno
+    public void adicionarAvaliacao(Avaliacao avaliacao) {
+        avaliacoes.add(avaliacao);
+    }
+
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -47,5 +59,9 @@ public class Aluno {
 
     public void setCurso(String curso) {
         this.curso = curso;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
     }
 }
