@@ -8,6 +8,7 @@ public class Curso {
 
     // Construtor
     public Curso(String nome, String codigo, int cargaHoraria) {
+
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome inválido!");
         }
@@ -23,6 +24,13 @@ public class Curso {
         this.nome = nome;
         this.codigo = codigo;
         this.cargaHoraria = cargaHoraria;
+    }
+
+    // Método para detalhar o curso
+    public void detalharCurso() {
+        System.out.println("Curso: " + nome);
+        System.out.println("Código: " + codigo);
+        System.out.println("Carga horária: " + cargaHoraria + " horas");
     }
 
     public String getNome() {
