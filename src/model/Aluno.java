@@ -4,7 +4,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aluno extends Usuario implements Autenticacao {
+public class Aluno extends Usuario implements Autenticacao,GeravelRelatorio {
 
     private String matricula;
     private String curso;
@@ -22,6 +22,21 @@ public class Aluno extends Usuario implements Autenticacao {
     public boolean autenticar(String login, String senha) {
         return getLogin().equals(login) && getSenha().equals(senha);
     }
+
+    // Gerar Relatório Aluno
+    @Override
+    public void gerarRelatorio() {
+        System.out.println("===== RELATORIO DO ALUNO =====");
+        System.out.println("Nome: " + getNome());
+        System.out.println("Matrícula: " + matricula);
+        System.out.println("Curso: " + curso);
+        System.out.println("Quantidade de avaliações: " + avaliacoes.size());
+
+        for (Avaliacao avaliacao : avaliacoes) {
+            System.out.println("Avaliação: " + avaliacao.getDescricao() + " | Nota: " + avaliacao.getNota());
+        }
+    }
+
 
     // Adicionar avaliação
     public void adicionarAvaliacao(Avaliacao avaliacao) {

@@ -1,7 +1,7 @@
 
 package model;
 
-public class Professor extends Usuario implements Autenticacao {
+public class Professor extends Usuario implements Autenticacao, GeravelRelatorio {
 
     private String especialidade;
     private String registro;
@@ -18,6 +18,16 @@ public class Professor extends Usuario implements Autenticacao {
     public boolean autenticar(String login, String senha) {
         return getLogin().equals(login) && getSenha().equals(senha);
     }
+
+    // Gerar Relatório Professor
+    @Override
+    public void gerarRelatorio() {
+        System.out.println("===== RELATORIO DO PROFESSOR =====");
+        System.out.println("Nome: " + getNome());
+        System.out.println("Especialidade: " + especialidade);
+        System.out.println("Registro: " + registro);
+    }
+
 
     public String getEspecialidade() {
         return especialidade;

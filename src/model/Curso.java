@@ -1,6 +1,6 @@
 package model;
 
-public class Curso {
+public class Curso implements GeravelRelatorio {
 
     private String nome;
     private String codigo;
@@ -32,6 +32,16 @@ public class Curso {
         System.out.println("Código: " + codigo);
         System.out.println("Carga horária: " + cargaHoraria + " horas");
     }
+
+    // Gerar Relatório Curso
+    @Override
+    public void gerarRelatorio() {
+        System.out.println("===== RELATORIO DO CURSO =====");
+        System.out.println("Nome: " + nome);
+        System.out.println("Código: " + codigo);
+        System.out.println("Carga horária: " + cargaHoraria + " horas");
+    }
+
 
     public String getNome() {
         return nome;
