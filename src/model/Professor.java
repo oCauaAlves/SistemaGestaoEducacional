@@ -1,36 +1,22 @@
+
 package model;
 
-public class Professor {
+public class Professor extends Usuario implements Autenticacao {
 
-    private String nome;
     private String especialidade;
     private String registro;
 
     // Construtor
-    public Professor(String nome, String especialidade, String registro) {
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome inválido!");
-        }
-
-        if (especialidade == null || especialidade.isBlank()) {
-            throw new IllegalArgumentException("Especialidade inválida!");
-        }
-
-        if (registro == null || registro.isBlank()) {
-            throw new IllegalArgumentException("Registro inválido!");
-        }
-
-        this.nome = nome;
+    public Professor(String nome, String especialidade, String registro, String login, String senha) {
+        super(nome, login, senha);
         this.especialidade = especialidade;
         this.registro = registro;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    // Autenticação
+    @Override
+    public boolean autenticar(String login, String senha) {
+        return getLogin().equals(login) && getSenha().equals(senha);
     }
 
     public String getEspecialidade() {

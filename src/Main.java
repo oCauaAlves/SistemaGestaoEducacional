@@ -1,38 +1,32 @@
 
-import model.Curso;
-import model.CursoPresencial;
-import model.CursoEAD;
+import model.Aluno;
+import model.Professor;
+import model.Administrador;
 
 public class Main {
     public static void main(String[] args) {
 
-        // Criando curso presencial
-        CursoPresencial presencial = new CursoPresencial(
-                "Análise e Desenvolvimento de Sistemas",
-                "ADS01",
-                2400,
-                "Sala 05"
-        );
+        // Criando usuários
+        Aluno aluno = new Aluno("Cauã", "2026001", "ADS", "caua", "123");
 
-        // Criando curso EAD
-        CursoEAD ead = new CursoEAD(
-                "Gestão de Tecnologia da Informação",
-                "GTI01",
-                2000,
-                "Moodle"
-        );
+        Professor professor = new Professor("Carlos", "Programação", "P001", "carlos", "456");
 
-        // Demonstrando polimorfismo
-        Curso curso1 = presencial;
-        Curso curso2 = ead;
+        Administrador administrador = new Administrador("Maria", "maria", "789");
 
-        // Exibindo detalhes dos cursos
-        curso1.detalharCurso();
+        // Testando autenticação do aluno
+        System.out.println("===== AUTENTICACAO =====");
+        System.out.println("Aluno: " + aluno.autenticar("caua", "123"));
 
-        System.out.println();
+        // Testando autenticação do professor
+        System.out.println("Professor: " + professor.autenticar("carlos", "456"));
 
-        curso2.detalharCurso();
+        // Testando autenticação do administrador
+        System.out.println("Administrador: " + administrador.autenticar("maria", "789"));
 
+        // Testando login incorreto
+        System.out.println("Login incorreto: " + aluno.autenticar("caua", "999"));
+
+        // Identificação do desenvolvedor
         System.out.println("\nDesenvolvido por: Cauã Alves");
     }
 }
