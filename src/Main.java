@@ -27,14 +27,16 @@ public class Main {
         CursoService cursoService = new CursoService(cursoRepository);
         TurmaService turmaService = new TurmaService(turmaRepository);
 
-        // Criando o menu
+        // Integrando as camadas através do menu
         Menu menu = new Menu(
                 alunoService,
                 professorService,
-                cursoService
+
+                cursoService,
+                turmaService
         );
 
-        // Executando o sistema
+        // Iniciando o sistema
         menu.executar();
     }
 }
